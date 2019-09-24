@@ -10,7 +10,7 @@ declare var screen: Screen;
 })
 export class FloorMapComponent implements AfterViewInit {
 
-  clientPosition: {x: 200, y: 50};
+  clientPosition: {x: -200, y: -50};
   mapSize = {width: 0, height: 0};
   deg = 0;
   navigate = false;
@@ -67,6 +67,6 @@ export class FloorMapComponent implements AfterViewInit {
   onClick() {
     setTimeout((x) => {
       this.navigate = true;
-    },2000);
+    },4000);
   }
 }
