@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {SpotBrokerService} from '../../app/spot-broker.service';
 
 enum ClientDirectionEnum {
   left = 'icono-arrow1-left',
@@ -19,12 +20,19 @@ enum ClientDirectionEnum {
 })
 export class ClientComponent implements OnInit {
   clientDirectionEnum = ClientDirectionEnum;
-  clientDiretion: ClientDirectionEnum = ClientDirectionEnum.left;
-  constructor() {
+  clientDiretion: ClientDirectionEnum = ClientDirectionEnum.rightDown;
+  topPossition: string;
+  leftPossition: string;
+
+  constructor(private spotBrokerService: SpotBrokerService) {
   }
 
   ngOnInit(): void {
     window.addEventListener('deviceorientation', this.handleOrientation, true);
+    this.spotBrokerService.getMacLocation().subscribe(res => {
+      this.leftPossition = res.x + 'px';
+      this.topPossition = res.y + 'px';
+    });
   }
 
   handleOrientation(event) {
