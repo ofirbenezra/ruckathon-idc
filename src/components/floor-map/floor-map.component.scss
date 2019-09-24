@@ -1,0 +1,31 @@
+client {
+  position: absolute;
+}
+
+compass {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  text-align: center;
+}
+
+.compass__rose {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.compass__rose__dial {
+  height: 100%;
+  width: 100%;
+}
+
+.compass__pointer {
+  left:200px;
+  top:100px;
+  position: absolute;
+  width:200px;
+  height: 200px;
+}
