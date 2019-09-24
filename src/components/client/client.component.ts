@@ -28,18 +28,10 @@ export class ClientComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    window.addEventListener('deviceorientation', this.handleOrientation, true);
     this.spotBrokerService.getMacLocation().subscribe(res => {
       this.leftPossition = res.x + 'px';
       this.topPossition = res.y + 'px';
     });
-  }
-
-  handleOrientation(event) {
-    var absolute = event.absolute;
-    var alpha    = event.alpha;
-    var beta     = event.beta;
-    var gamma    = event.gamma;
   }
 
 }
