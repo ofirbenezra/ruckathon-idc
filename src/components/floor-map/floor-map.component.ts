@@ -65,6 +65,8 @@ export class FloorMapComponent implements AfterViewInit {
   }
 
   onClick() {
-    this.navigate = true;
+    setTimeout((x) => {
+      this.navigate = true;
+    },2000);
   }
 }
