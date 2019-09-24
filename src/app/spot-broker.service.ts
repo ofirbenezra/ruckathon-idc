@@ -16,9 +16,14 @@ export class SpotBrokerService {
   constructor(private httpClient: HttpClient) { }
 
   public getMacLocation(): Observable<any> {
-    return interval(500).pipe(
+    return interval(1000).pipe(
       switchMap(() => this.httpClient.get(`http://${this.host}:${this.port}/locations/mac/mock?id=${this.macAddress}`))
     );
+    // return this.httpClient.get(`http://${this.host}:${this.port}/locations/mac/mock?id=${this.macAddress}`);
+  }
+
+  public initIndex(): Observable<any> {
+      return this.httpClient.get(`http://${this.host}:${this.port}/locations/mac/init-index`);
     // return this.httpClient.get(`http://${this.host}:${this.port}/locations/mac/mock?id=${this.macAddress}`);
   }
 }

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {SpotBrokerService} from '../../app/spot-broker.service';
 
 enum ClientDirectionEnum {
@@ -23,6 +23,10 @@ export class ClientComponent implements OnInit {
   clientDiretion: ClientDirectionEnum = ClientDirectionEnum.rightDown;
   topPossition: string;
   leftPossition: string;
+  rotation: number;
+  @Input() show: boolean;
+  @Output() rotateChange = new EventEmitter();
+
   countries = [
     {id: 1, name: 'United States'},
     {id: 2, name: 'Australia'},
@@ -31,14 +35,20 @@ export class ClientComponent implements OnInit {
     {id: 5, name: 'England'}
   ];
   selectedValue = null;
+
   constructor(private spotBrokerService: SpotBrokerService) {
   }
 
   ngOnInit(): void {
-    this.spotBrokerService.getMacLocation().subscribe(res => {
-      this.leftPossition = res.x + 'px';
-      this.topPossition = res.y + 'px';
-    });
+    // if (this.show){
+      this.spotBrokerService.getMacLocation().subscribe(res => {
+        this.leftPossition = res.x + 'px';
+        this.topPossition = res.y + 'px';
+        this.rotation = res.rotation;
+        this.rotateChange.emit(this.rotation);
+      });
+    // }
+
   }
 
 }
