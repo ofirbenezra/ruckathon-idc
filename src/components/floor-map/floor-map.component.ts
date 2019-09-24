@@ -15,6 +15,7 @@ export class FloorMapComponent implements AfterViewInit {
   deg = 0;
   navigate = false;
   @ViewChild('map', {static: false}) map: ElementRef;
+  @ViewChild('path', {static: false}) path: ElementRef;
 
   constructor(private spotBrokerService: SpotBrokerService) {
     this.spotBrokerService.initIndex().subscribe(x => {
@@ -42,6 +43,12 @@ export class FloorMapComponent implements AfterViewInit {
     this.map.nativeElement.style.msTransform     = 'rotate(' + this.deg + 'deg)';
     this.map.nativeElement.style.oTransform      = 'rotate(' + this.deg + 'deg)';
     this.map.nativeElement.style.transform       = 'rotate(' + this.deg + 'deg)';
+
+    this.path.nativeElement.style.webkitTransform = 'rotate(' + this.deg + 'deg)';
+    this.path.nativeElement.style.mozTransform    = 'rotate(' + this.deg + 'deg)';
+    this.path.nativeElement.style.msTransform     = 'rotate(' + this.deg + 'deg)';
+    this.path.nativeElement.style.oTransform      = 'rotate(' + this.deg + 'deg)';
+    this.path.nativeElement.style.transform       = 'rotate(' + this.deg + 'deg)';
   }
 
   rotatRight() {

@@ -14,5 +14,6 @@
   </select>
 </div>
 <img #map src="./assets/idc_map.png" (load)="onMapLoaded($event)" class="map"/>
-<client [show]="navigate" *ngIf="navigate" [ngStyle]="{'top': clientPosition?.x+'px'}"></client>
-<img src="./assets/idc_route.png" *ngIf="navigate" (load)="onMapLoaded($event)" class="map"/>
+<client [show]="navigate" *ngIf="navigate" [ngStyle]="{'top': clientPosition?.x+'px'}" (rotateChange)="onRotationChange($event)"></client>
+<img #path src="./assets/idc_route.png" *ngIf="navigate" (load)="onMapLoaded($event)" class="map"/>
+
